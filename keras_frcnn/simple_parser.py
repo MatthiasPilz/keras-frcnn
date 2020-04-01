@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+from PIL import Image
 
 def get_data(input_path):
 	found_bg = False
@@ -32,9 +33,13 @@ def get_data(input_path):
 
 			if filename not in all_imgs:
 				all_imgs[filename] = {}
-				
-				img = cv2.imread(filename)
-				(rows,cols) = img.shape[:2]
+
+				# img = cv2.imread(filename)
+				# (rows,cols) = img.shape[:2]
+
+				img = Image.open(filename)
+				cols, rows = img.size
+
 				all_imgs[filename]['filepath'] = filename
 				all_imgs[filename]['width'] = cols
 				all_imgs[filename]['height'] = rows
