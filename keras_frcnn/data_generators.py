@@ -325,10 +325,9 @@ def get_anchor_gt(all_img_data, class_count, C, img_length_calc_function, backen
 
 				y_rpn_regr[:, y_rpn_regr.shape[1]//2:, :, :] *= C.std_scaling
 
-				if backend == 'tf':
-					x_img = np.transpose(x_img, (0, 2, 3, 1))
-					y_rpn_cls = np.transpose(y_rpn_cls, (0, 2, 3, 1))
-					y_rpn_regr = np.transpose(y_rpn_regr, (0, 2, 3, 1))
+				x_img = np.transpose(x_img, (0, 2, 3, 1))
+				y_rpn_cls = np.transpose(y_rpn_cls, (0, 2, 3, 1))
+				y_rpn_regr = np.transpose(y_rpn_regr, (0, 2, 3, 1))
 
 				yield np.copy(x_img), [np.copy(y_rpn_cls), np.copy(y_rpn_regr)], img_data_aug
 
